@@ -1424,12 +1424,12 @@ impl Inner {
                     };
 
             let bytes_per_offset: u8 = match max_indexable_offset {
-                i if i < 256 => 1,
-                i if i < (1 << 16) => 2,
-                i if i < (1 << 24) => 3,
-                i if i < (1 << 32) => 4,
-                i if i < (1 << 40) => 5,
-                i if i < (1 << 48) => 6,
+                i if (i as u64) < 256u64 => 1,
+                i if (i as u64) < (1u64 << 16) => 2,
+                i if (i as u64) < (1u64 << 24) => 3,
+                i if (i as u64) < (1u64 << 32) => 4,
+                i if (i as u64) < (1u64 << 40) => 5,
+                i if (i as u64) < (1u64 << 48) => 6,
                 _ => unreachable!(),
             };
 
